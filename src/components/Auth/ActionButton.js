@@ -1,12 +1,26 @@
 import { Text, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
+import { reset } from "../../store/auth/authSlice";
 
-const ActionButton = ({ value }) => {
+const ActionButton = ({ value, onPress = null, disabled = false }) => {
+
+    const dispatch = useDispatch()
+
+    const handlePress = () =>{
+        dispatch(reset())
+        onPress()
+    }
+
     return (
         <TouchableOpacity
+            disabled={disabled}
             style={{ backgroundColor: "#fc6b68", height: 55, borderRadius: 15, alignItems: "center", justifyContent: "center", marginTop: 10 }}
-        // onPress={() => navigation.navigate('Register')}
+            onPress={handlePress}
         >
-            <Text style={{ fontWeight: "600", color: "#fff" }}>{value}</Text>
+            {disabled
+                ? <Text style={{ fontWeight: "600", color: "#fff" }}>Yükleniyor</Text>
+                : <Text style={{ fontWeight: "600", color: "#fff" }}>{value}</Text>
+            }
         </TouchableOpacity>
     )
 }
