@@ -1,6 +1,6 @@
 import { TextInput } from "react-native";
 
-const InputBox = ({placeholder}) => {
+const InputBox = ({ placeholder, value, onChange }) => {
     return (
         <TextInput
             placeholder={placeholder}
@@ -20,6 +20,8 @@ const InputBox = ({placeholder}) => {
                 shadowRadius: 24,
                 marginBottom: 20
             }}
+            value={value}
+            onChangeText={(value) => onChange(value)}
         />
     )
 }
