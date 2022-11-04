@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../../store/auth/authActions";
 
@@ -41,29 +42,31 @@ const RegisterScreen = ({ navigation }) => {
         <>
             <FocusAwareStatusBar barStyle="dark-content" />
             <DismissKeyboard>
-                <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
-                    <SafeAreaView>
-                        <HeaderTitle title="Hello Again!" subTitle={`Wellcome back you've \n been missed!`} />
-                        {error && (
-                            <Text style={{ color: "red", textAlign: "center", marginTop: 15 }} >{error}</Text>
-                        )}
-                        {success && (
-                            <Text style={{ color: "green", textAlign: "center", marginTop: 15 }} >{error}</Text>
-                        )}
+                <KeyboardAwareScrollView>
+                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
+                        <SafeAreaView>
+                            <HeaderTitle title="Hello Again!" subTitle={`Wellcome back you've \n been missed!`} />
+                            {error && (
+                                <Text style={{ color: "red", textAlign: "center", marginTop: 15 }} >{error}</Text>
+                            )}
+                            {success && (
+                                <Text style={{ color: "green", textAlign: "center", marginTop: 15 }} >{error}</Text>
+                            )}
 
-                        <View style={{ paddingHorizontal: 25, marginTop: 25 }}>
-                            <InputBox placeholder="Name" value={name} onChange={setName} />
-                            <InputBox placeholder="Email" value={email} onChange={setEmail} />
-                            <InputBox placeholder="Password" value={password} onChange={setPassword} />
-                            <InputBox placeholder="Password Confrim" value={password_confirmation} onChange={setPassword_confirmation} />
-                            <ActionButton disabled={loading} value="Register" onPress={submitForm} />
-                        </View>
-                        <BottomLink navigation={navigation} message="Already have an account?" linkMessage="Sign In" link="Login" />
+                            <View style={{ paddingHorizontal: 25, marginTop: 25 }}>
+                                <InputBox placeholder="Name" value={name} onChange={setName} />
+                                <InputBox placeholder="Email" value={email} onChange={setEmail} />
+                                <InputBox placeholder="Password" value={password} onChange={setPassword} />
+                                <InputBox placeholder="Password Confrim" value={password_confirmation} onChange={setPassword_confirmation} />
+                                <ActionButton disabled={loading} value="Register" onPress={submitForm} />
+                            </View>
+                            <BottomLink navigation={navigation} message="Already have an account?" linkMessage="Sign In" link="Login" />
 
 
 
-                    </SafeAreaView>
-                </View>
+                        </SafeAreaView>
+                    </View>
+                </KeyboardAwareScrollView>
             </DismissKeyboard>
         </>
     )

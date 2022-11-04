@@ -3,6 +3,7 @@ import { View } from "react-native";
 import routes from "../../constants/routes";
 import axios from "axios";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 import ActionButton from "../../components/Auth/ActionButton";
 import HeaderTitle from "../../components/Auth/HeaderTitle";
@@ -46,25 +47,28 @@ const VerifyEmailScreen = ({ navigation }) => {
         <>
             <FocusAwareStatusBar barStyle="dark-content" />
             <DismissKeyboard>
-                <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
-                    <SafeAreaView>
-                        <HeaderTitle title="Verify Email" subTitle={message} />
-                        <View style={{ marginTop: 15 }}>
-                            <InputBox placeholder="Email" value={email} onChange={setEmail} />
-                        </View>
-                        <ActionButton disabled={loading} value="Send verify email" onPress={resendVerifyEmail} />
-                        <ActionButton
-                            value="Go Back"
-                            onPress={
-                                () => navigation.reset({
-                                    index: 0,
-                                    routes: [{ name: 'Login' }],
-                                })
-                            }
-                        />
+                <KeyboardAwareScrollView>
+                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
+                        <SafeAreaView>
+                            <HeaderTitle title="Verify Email" subTitle={message} />
+                            <View style={{ marginTop: 15 }}>
+                                <InputBox placeholder="Email" value={email} onChange={setEmail} />
+                            </View>
+                            <ActionButton disabled={loading} value="Send verify email" onPress={resendVerifyEmail} />
+                            <ActionButton
+                                value="Go Back"
+                                onPress={
+                                    () => navigation.reset({
+                                        index: 0,
+                                        routes: [{ name: 'Login' }],
+                                    })
+                                }
+                            />
 
-                    </SafeAreaView>
-                </View>
+                        </SafeAreaView>
+                    </View>
+                </KeyboardAwareScrollView>
+
             </DismissKeyboard>
         </>
     )
