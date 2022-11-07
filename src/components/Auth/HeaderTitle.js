@@ -1,12 +1,13 @@
 import { Text, View } from "react-native";
+import colors from "../../theme/colors";
 
 const HeaderTitle = ({ title, subTitle }) => {
     return (
         <View style={{ paddingTop: 20 }}>
-            <Text style={{ fontWeight: "bold", fontSize: 30, textAlign: "center", color: "#373447" }}>
+            <Text style={{ fontWeight: "bold", fontSize: 30, textAlign: "center", color: colors.primary }}>
                 {title}
             </Text>
-            <Text style={{ fontWeight: "normal", fontSize: 16, textAlign: "center", color: "#5f5f6c", marginTop: 15 }}>
+            <Text style={{ fontWeight: "normal", fontSize: 16, textAlign: "center", color: colors.secondary, marginTop: 15 }}>
                 {subTitle}
             </Text>
         </View>

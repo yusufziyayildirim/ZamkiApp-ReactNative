@@ -11,6 +11,7 @@ import HeaderTitle from "../../components/Auth/HeaderTitle";
 import InputBox from "../../components/Auth/InputBox";
 import FocusAwareStatusBar from "../../components/FocusAwareStatusBar";
 import DismissKeyboard from "../../components/DismissKeyboard";
+import colors from "../../theme/colors";
 
 
 const ForgotPasswordScreen = ({ navigation }) => {
@@ -30,7 +31,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
             <FocusAwareStatusBar barStyle="dark-content" />
             <DismissKeyboard>
                 <KeyboardAwareScrollView>
-                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
+                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: colors.gray }}>
                         <SafeAreaView>
                             <HeaderTitle title="Hello Again!" subTitle={`Wellcome back you've \n been missed!`} />
                             {error && (

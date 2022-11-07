@@ -1,5 +1,6 @@
-import { View, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, useColorScheme } from 'react-native';
 import { FontAwesome5 , Ionicons, AntDesign } from '@expo/vector-icons';
+import colors from '../theme/colors';
 
 function TabBar({ state, descriptors, navigation }) {
     return (
@@ -35,7 +36,7 @@ function TabBar({ state, descriptors, navigation }) {
                                 <Ionicons name="home" size={24} color="black" />
                             ) : (
                                 label == "Home" && (
-                                    <Ionicons name="home-outline" size={24} color="black" />
+                                    <Ionicons name="home-outline" size={24} color={colors.secondary} />
                                 )
                             )
                         }
@@ -44,7 +45,7 @@ function TabBar({ state, descriptors, navigation }) {
                                 <Ionicons name="chatbubbles" size={24} color="black" />
                             ) : (
                                 label == "Chats" && (
-                                    <Ionicons name="chatbubbles-outline" size={24} color="black" />
+                                    <Ionicons name="chatbubbles-outline" size={24} color={colors.secondary} />
                                 )
                             )
                         }
@@ -53,7 +54,7 @@ function TabBar({ state, descriptors, navigation }) {
                                 <AntDesign name="star" size={24} color="black" />
                             ) : (
                                 label == "Rooms" && (
-                                    <AntDesign name="staro" size={24} color="black" />
+                                    <AntDesign name="staro" size={24} color={colors.secondary} />
                                 )
                             )
                         }
@@ -62,7 +63,7 @@ function TabBar({ state, descriptors, navigation }) {
                                 <FontAwesome5  name="user-alt" size={22} color="black" />
                             ) : (
                                 label == "Profile" && (
-                                    <FontAwesome5  name="user" size={23} color="black" />
+                                    <FontAwesome5  name="user" size={23} color={colors.secondary} />
                                 )
                             )
                         }
@@ -80,10 +81,12 @@ const styles = StyleSheet.create({
     tabBarWrap: {
         flexDirection: 'row',
         shadowColor: "#000",
-        backgroundColor: "#eff3f5",
+        backgroundColor: colors.gray,
         shadowOpacity: 0.1,
         shadowRadius: 24,
-        paddingBottom: 30
+        paddingBottom: 30,
+        borderTopWidth:0.5,
+        borderTopColor: colors.borderColor
     },
     tabBarButton: {
         flex: 1,
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
         height: 4,
         width: 4,
         borderRadius: 100,
-        backgroundColor: "red",
+        backgroundColor: colors.red,
         marginTop: 5
     }
 })

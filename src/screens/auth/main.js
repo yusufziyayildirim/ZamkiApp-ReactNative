@@ -3,14 +3,15 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import HeaderTitle from "../../components/Auth/HeaderTitle";
 import FocusAwareStatusBar from "../../components/FocusAwareStatusBar";
+import colors from "../../theme/colors";
 
 const MainScreen = ({ navigation }) => {
     return (
         <>
             <FocusAwareStatusBar barStyle="dark-content" />
-            <View style={{ height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
+            <View style={{ height: "100%", paddingHorizontal: 7, backgroundColor: colors.gray }}>
                 <SafeAreaView>
-                    <View style={{ height: "50%", backgroundColor: "black", borderRadius: 40, backgroundColor: "#db9cf8" }} >
+                    <View style={{ height: "50%", borderRadius: 40, backgroundColor: "#db9cf8" }} >
                         <Image
                             style={{ height: "100%", width: "100%", borderRadius: 40 }}
                             source={require('../../assets/images/mainBg.webp')}
@@ -28,13 +29,13 @@ const MainScreen = ({ navigation }) => {
                                     style={{ backgroundColor: "#fff", borderTopLeftRadius: 10, borderBottomLeftRadius: 10, borderTopRightRadius: 15, borderBottomRightRadius: 15, width: "50%", alignItems: "center", justifyContent: "center" }}
                                     onPress={() => navigation.navigate('Register')}
                                 >
-                                    <Text style={{ fontWeight: "600", color: "#373447" }}>Register</Text>
+                                    <Text style={{ fontWeight: "600", color: colors.primary }}>Register</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={{ width: "50%", alignItems: "center", justifyContent: "center" }}
                                     onPress={() => navigation.navigate('Login')}
                                 >
-                                    <Text style={{ fontWeight: "600", color: "#373447" }}>Sign In</Text>
+                                    <Text style={{ fontWeight: "600", color: colors.primary }}>Sign In</Text>
                                 </TouchableOpacity>
                             </View>
                         </View>

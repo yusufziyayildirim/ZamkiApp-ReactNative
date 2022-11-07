@@ -10,6 +10,7 @@ import HeaderTitle from "../../components/Auth/HeaderTitle";
 import InputBox from "../../components/Auth/InputBox";
 import DismissKeyboard from "../../components/DismissKeyboard";
 import FocusAwareStatusBar from "../../components/FocusAwareStatusBar";
+import colors from "../../theme/colors";
 
 const VerifyEmailScreen = ({ navigation }) => {
     const [email, setEmail] = useState("")
@@ -48,7 +49,7 @@ const VerifyEmailScreen = ({ navigation }) => {
             <FocusAwareStatusBar barStyle="dark-content" />
             <DismissKeyboard>
                 <KeyboardAwareScrollView>
-                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
+                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: colors.gray }}>
                         <SafeAreaView>
                             <HeaderTitle title="Verify Email" subTitle={message} />
                             <View style={{ marginTop: 15 }}>

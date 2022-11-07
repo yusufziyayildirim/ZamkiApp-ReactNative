@@ -1,24 +1,25 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import colors from '../theme/colors'
 
 const UserListItem = ({ userImg, userName, userDetail, speaks, learns }) => {
     return (
-        <TouchableOpacity style={{ width: "100%", paddingHorizontal: 20, flexDirection: "row", marginTop: 15, height: 100, alignItems: "center", borderTopWidth: .4, paddingTop: 15 }}>
-            <Image style={{ height: 90, width: 90, borderRadius: 15 }} source={{ uri: userImg }} />
-            <View style={{ width: "100%", paddingLeft: 15, paddingRight: 15, height: 85, justifyContent: "space-between" }}>
+        <TouchableOpacity style={styles.itemWrap}>
+            <Image style={styles.userImg} source={{ uri: userImg }} />
+            <View style={styles.contentWrap}>
                 <View>
-                    <Text style={{ fontSize: 17, fontWeight: "700", marginBottom: 5 }}>{userName}</Text>
-                    <Text style={{ maxWidth: "80%" }}>{userDetail}</Text>
+                    <Text style={{ fontSize: 17, fontWeight: "700", marginBottom: 5, color: colors.textPrimary }}>{userName}</Text>
+                    <Text style={{ maxWidth: "80%", color: colors.secondary }}>{userDetail}</Text>
                 </View>
                 <View style={{ flexDirection: "row" }}>
                     <View style={{ flexDirection: "row", alignItems: "center" }}>
-                        <Text>Speaks:</Text>
-                        <View style={{ width: 20, height: 20, backgroundColor: "#FCF55F", borderRadius: 50, marginLeft: 5 }} />
-                        <View style={{ width: 20, height: 20, backgroundColor: "blue", borderRadius: 50, marginLeft: 5 }} />
+                        <Text style={{ fontWeight: "600", color: colors.primary }}>Speaks:</Text>
+                        <View style={styles.flag} />
+                        <View style={styles.flag} />
                     </View>
                     <View style={{ flexDirection: "row", alignItems: "center", marginLeft: 15 }}>
-                        <Text>Learns:</Text>
-                        <View style={{ width: 20, height: 20, backgroundColor: "#FCF55F", borderRadius: 50, marginLeft: 5 }} />
-                        <View style={{ width: 20, height: 20, backgroundColor: "blue", borderRadius: 50, marginLeft: 5 }} />
+                        <Text style={{ fontWeight: "600", color: colors.primary }}>Learns:</Text>
+                        <View style={styles.flag} />
+                        <View style={styles.flag} />
                     </View>
                 </View>
             </View>
@@ -27,3 +28,37 @@ const UserListItem = ({ userImg, userName, userDetail, speaks, learns }) => {
 }
 
 export default UserListItem
+
+
+const styles = StyleSheet.create({
+    itemWrap: {
+        width: "100%",
+        paddingHorizontal: 20,
+        flexDirection: "row",
+        marginTop: 15,
+        height: 100,
+        alignItems: "center",
+        borderTopWidth: .5,
+        borderTopColor: colors.borderColor,
+        paddingTop: 15
+    },
+    userImg: {
+        height: 90,
+        width: 90,
+        borderRadius: 15
+    },
+    contentWrap: {
+        width: "100%",
+        paddingLeft: 15,
+        paddingRight: 15,
+        height: 85,
+        justifyContent: "space-between"
+    },
+    flag: {
+        width: 20,
+        height: 20,
+        backgroundColor: "#FCF55F",
+        borderRadius: 50,
+        marginLeft: 5
+    }
+})

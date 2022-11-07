@@ -1,6 +1,7 @@
 import { Text, View, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import { reset } from "../../store/auth/authSlice";
+import colors from "../../theme/colors";
 
 const BottomLink = ({ navigation, message, linkMessage, link }) => {
 
@@ -18,7 +19,7 @@ const BottomLink = ({ navigation, message, linkMessage, link }) => {
     return (
 
         <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 45 }}>
-            <Text style={{ fontWeight: "600", color: "#5f5f6c", marginRight: 5 }}>
+            <Text style={{ fontWeight: "600", color: colors.secondary, marginRight: 5 }}>
                 {message}
             </Text>
             <TouchableOpacity onPress={handlePress}>

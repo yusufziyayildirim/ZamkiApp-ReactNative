@@ -12,6 +12,7 @@ import InputBox from "../../components/Auth/InputBox";
 import ActionButton from "../../components/Auth/ActionButton";
 import BottomLink from "../../components/Auth/BottomLink";
 import HeaderTitle from "../../components/Auth/HeaderTitle";
+import colors from "../../theme/colors";
 
 const LoginScreen = ({ navigation }) => {
 
@@ -37,7 +38,7 @@ const LoginScreen = ({ navigation }) => {
             <FocusAwareStatusBar barStyle="dark-content" />
             <DismissKeyboard>
                 <KeyboardAwareScrollView>
-                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: "#f2f0fc" }}>
+                    <View style={{ paddingTop: 50, height: "100%", paddingHorizontal: 7, backgroundColor: colors.gray }}>
                         <SafeAreaView>
                             <HeaderTitle title="Hello Again!" subTitle={`Wellcome back you've \n been missed!`} />
                             {error && (
@@ -49,7 +50,7 @@ const LoginScreen = ({ navigation }) => {
 
                                 <View style={{ alignItems: "flex-end", marginBottom: 10 }}>
                                     <TouchableOpacity onPress={() => { navigation.navigate('ForgotPassword'); dispatch(reset()) }}>
-                                        <Text style={{ fontWeight: "500", color: "#5f5f6c", marginRight: 5, textAlign: "right", paddingRight: 5 }}>
+                                        <Text style={{ fontWeight: "500", color: colors.secondary, marginRight: 5, textAlign: "right", paddingRight: 5 }}>
                                             Forgot Password
                                         </Text>
                                     </TouchableOpacity>

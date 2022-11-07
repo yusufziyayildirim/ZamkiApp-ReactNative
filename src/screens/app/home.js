@@ -5,16 +5,17 @@ import DismissKeyboard from '../../components/DismissKeyboard'
 import FocusAwareStatusBar from '../../components/FocusAwareStatusBar'
 import UserListItem from '../../components/UserListItem';
 import SearchBox from '../../components/SearchBox';
+import colors from '../../theme/colors';
 
 const HomeScreen = () => {
 
   return (
-    <View style={{ backgroundColor: "#eff3f5", paddingTop: 10 }}>
+    <View style={{ backgroundColor: colors.backgroundColor, paddingTop: 10 }}>
       <FocusAwareStatusBar barStyle="dark-content" />
       <DismissKeyboard>
         <SafeAreaView>
           <Text style={{ fontSize: 25, fontWeight: "800", textAlign: "center" }}>Community</Text>
-          <View style={{ width: "100%", height: .4, backgroundColor: "#A9A9A9", marginTop: 5 }} />
+          <View style={{ width: "100%", height: .5, backgroundColor: colors.borderColor, marginTop: 5 }} />
           <ScrollView s>
             <SearchBox />
             <View>

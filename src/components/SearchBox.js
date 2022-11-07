@@ -1,6 +1,7 @@
-import { TouchableOpacity, TextInput, View, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { TouchableOpacity, TextInput, View, StyleSheet } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 import { useState } from 'react';
+import colors from '../theme/colors';
 
 const SearchBox = () => {
     const [search, setSearch] = useState("")
@@ -9,38 +10,50 @@ const SearchBox = () => {
         setSearch("")
     }
     return (
-        <TouchableWithoutFeedback onPress={Keyboard.dismiss} >
-            <View style={{ position: "relative" }}>
-                <FontAwesome name="search" size={20} color="#A9A9A9" style={{ position: "absolute", top: 24, left: 30, zIndex: 5 }} />
-                <TextInput placeholder='Search'
-                    value={search}
-                    onChangeText={(value) => setSearch(value)}
-                    style={{
-                        marginHorizontal: 20,
-                        backgroundColor: "#e5ecf0",
-                        borderRadius: 10,
-                        height: 40,
-                        paddingRight: 20,
-                        paddingLeft: 40,
-                        shadowColor: "#000",
-                        shadowOffset: {
-                            width: 0,
-                            height: 2,
-                        },
-                        shadowOpacity: 0.25,
-                        shadowRadius: 3.84,
-                        marginTop: 15
-                    }}
-                />
-                {search.length > 0 && (
-                    <TouchableOpacity onPress={onClear} style={{ zIndex: 65, position: "absolute", top: 23, right: 30, width: 30, height: 30, alignItems: "center" }}>
-                        <FontAwesome name="close" size={24} color="#A9A9A9" />
-                    </TouchableOpacity>
-                )}
-            </View>
-        </TouchableWithoutFeedback>
+        <View style={{ position: "relative" }}>
+            <FontAwesome name="search" size={20} color={colors.textGrey} style={styles.searchIcon} />
+            <TextInput placeholder='Search'
+                value={search}
+                onChangeText={(value) => setSearch(value)}
+                style={styles.searchInput}
+            />
+            {search.length > 0 && (
+                <TouchableOpacity onPress={onClear} style={styles.closeIcon}>
+                    <FontAwesome name="close" size={24} color={colors.textGrey} />
+                </TouchableOpacity>
+            )}
+        </View>
 
     )
 }
 
 export default SearchBox
+
+
+const styles = StyleSheet.create({
+    searchIcon: {
+        position: "absolute",
+        top: 24,
+        left: 30,
+        zIndex: 5
+    },
+    searchInput: {
+        marginHorizontal: 20,
+        backgroundColor: colors.gray,
+        opacity: 0.7,
+        borderRadius: 10,
+        height: 40,
+        paddingRight: 20,
+        paddingLeft: 40,
+        marginTop: 15
+    },
+    closeIcon: {
+        zIndex: 5,
+        position: "absolute",
+        top: 23,
+        right: 30,
+        width: 30,
+        height: 30,
+        alignItems: "center"
+    }
+})

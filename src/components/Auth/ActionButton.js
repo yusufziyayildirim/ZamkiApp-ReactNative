@@ -1,6 +1,7 @@
 import { Text, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
 import { reset } from "../../store/auth/authSlice";
+import colors from "../../theme/colors";
 
 const ActionButton = ({ value, onPress = null, disabled = false }) => {
 
@@ -14,7 +15,7 @@ const ActionButton = ({ value, onPress = null, disabled = false }) => {
     return (
         <TouchableOpacity
             disabled={disabled}
-            style={{ backgroundColor: "#fc6b68", height: 55, borderRadius: 15, alignItems: "center", justifyContent: "center", marginTop: 10 }}
+            style={{ backgroundColor: colors.red, height: 55, borderRadius: 15, alignItems: "center", justifyContent: "center", marginTop: 10 }}
             onPress={handlePress}
         >
             {disabled
