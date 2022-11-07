@@ -1,28 +1,70 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, ScrollView, Text, TextInput, TouchableOpacity } from 'react-native'
+import { FontAwesome } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { useDispatch } from "react-redux";
-import { logout } from '../../store/auth/authActions';
+import DismissKeyboard from '../../components/DismissKeyboard'
+import FocusAwareStatusBar from '../../components/FocusAwareStatusBar'
+import UserListItem from '../../components/UserListItem';
+import SearchBox from '../../components/SearchBox';
 
 const HomeScreen = () => {
 
-  const dispatch = useDispatch()
-
-  const handleLogout = async () => {
-    dispatch(logout())
-  }
   return (
-    <SafeAreaView>
-      <View style={{ alignItems: "center", paddingTop: 10 }}>
-        <Text>
-          Home Page
-        </Text>
-        <TouchableOpacity onPress={handleLogout} style={{ marginTop: 300, width: 100, height: 60, backgroundColor: "blue", justifyContent: "center", alignItems: "center", borderRadius: 10 }}>
-          <Text style={{ color: "white" }}>
-            Logout
-          </Text>
-        </TouchableOpacity>
-      </View>
-    </SafeAreaView>
+    <View style={{ backgroundColor: "#eff3f5", paddingTop: 10 }}>
+      <FocusAwareStatusBar barStyle="dark-content" />
+      <DismissKeyboard>
+        <SafeAreaView>
+          <Text style={{ fontSize: 25, fontWeight: "800", textAlign: "center" }}>Community</Text>
+          <View style={{ width: "100%", height: .4, backgroundColor: "#A9A9A9", marginTop: 5 }} />
+          <ScrollView s>
+            <SearchBox />
+            <View>
+              <UserListItem
+                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
+                userName="Yusuf Yıldırım"
+                userDetail="I want to practice basic spanis and make some friends"
+                speaks=""
+                learns=""
+              />
+              <UserListItem
+                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
+                userName="Yusuf Yıldırım"
+                userDetail="I want to practice basic spanis and make some friends"
+                speaks=""
+                learns=""
+              />
+              <UserListItem
+                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
+                userName="Yusuf Yıldırım"
+                userDetail="I want to practice basic spanis and make some friends"
+                speaks=""
+                learns=""
+              />
+              <UserListItem
+                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
+                userName="Yusuf Yıldırım"
+                userDetail="I want to practice basic spanis and make some friends"
+                speaks=""
+                learns=""
+              />
+              <UserListItem
+                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
+                userName="Yusuf Yıldırım"
+                userDetail="I want to practice basic spanis and make some friends"
+                speaks=""
+                learns=""
+              />
+              <UserListItem
+                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
+                userName="Yusuf Yıldırım"
+                userDetail="I want to practice basic spanis and make some friends"
+                speaks=""
+                learns=""
+              />
+            </View>
+          </ScrollView>
+        </SafeAreaView>
+      </DismissKeyboard>
+    </View>
   )
 }
 
