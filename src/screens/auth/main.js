@@ -1,11 +1,13 @@
 import { Text, TouchableOpacity, View, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
+import { useDispatch } from "react-redux";
+import { reset } from "../../store/auth/authSlice";
 import HeaderTitle from "../../components/Auth/HeaderTitle";
 import FocusAwareStatusBar from "../../components/FocusAwareStatusBar";
 import colors from "../../theme/colors";
 
 const MainScreen = ({ navigation }) => {
+    const dispatch = useDispatch()
     return (
         <>
             <FocusAwareStatusBar barStyle="dark-content" />
@@ -33,7 +35,7 @@ const MainScreen = ({ navigation }) => {
                                 </TouchableOpacity>
                                 <TouchableOpacity
                                     style={{ width: "50%", alignItems: "center", justifyContent: "center" }}
-                                    onPress={() => navigation.navigate('Login')}
+                                    onPress={() => {navigation.navigate('Login') ; dispatch(reset())}}
                                 >
                                     <Text style={{ fontWeight: "600", color: colors.primary }}>Sign In</Text>
                                 </TouchableOpacity>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -25,12 +25,15 @@ const LoginScreen = ({ navigation }) => {
 
     const dispatch = useDispatch()
 
-
-    const submitForm = () => {
-        dispatch(userLogin({ email, password }))
+    useEffect(() => {
         if (error) {
             setPassword("")
         }
+    }, [error])
+
+
+    const submitForm = () => {
+        dispatch(userLogin({ email, password }))
     }
 
     return (

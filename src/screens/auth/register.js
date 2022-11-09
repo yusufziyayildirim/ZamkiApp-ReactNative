@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -24,10 +24,7 @@ const RegisterScreen = ({ navigation }) => {
     )
     const dispatch = useDispatch()
 
-
-
-    const submitForm = () => {
-        dispatch(registerUser({ name, email, password, password_confirmation }))
+    useEffect(() => {
         if (success) {
             setName("")
             setEmail("")
@@ -38,6 +35,10 @@ const RegisterScreen = ({ navigation }) => {
             setPassword("")
             setPassword_confirmation("")
         }
+    }, [error, success])
+
+    const submitForm = () => {
+        dispatch(registerUser({ name, email, password, password_confirmation }))
     }
     return (
         <>
@@ -51,7 +52,7 @@ const RegisterScreen = ({ navigation }) => {
                                 <Text style={{ color: "red", textAlign: "center", marginTop: 15 }} >{error}</Text>
                             )}
                             {success && (
-                                <Text style={{ color: "green", textAlign: "center", marginTop: 15 }} >{error}</Text>
+                                <Text style={{ color: "green", textAlign: "center", marginTop: 15 }} >{success}</Text>
                             )}
 
                             <View style={{ paddingHorizontal: 25, marginTop: 25 }}>

@@ -89,8 +89,7 @@ export const userLogin = createAsyncThunk(
             if (response.data.status) {
                 // store user's token in local storage
                 await AsyncStorage.setItem('userToken', response.data.data)
-
-                return response
+                return response.data.data
             }
 
             return rejectWithValue(response.data.message)
