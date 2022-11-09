@@ -18,6 +18,9 @@ const authSlice = createSlice({
             state.error = false
             state.success = false
         },
+        setUserInfo(state, payload) {
+            state.userInfo = payload
+        },
     },
     extraReducers: {
 
@@ -28,9 +31,11 @@ const authSlice = createSlice({
         },
         [isTokenValid.fulfilled]: (state, { payload }) => {
             state.loading = false
-            state.userToken = payload.data.status
+            state.userToken = payload[0]
+            state.userInfo = payload[1]
         },
         [isTokenValid.rejected]: (state) => {
+            state.userToken = false
             state.loading = false
             // state.error = payload
         },
@@ -57,10 +62,12 @@ const authSlice = createSlice({
         },
         [userLogin.fulfilled]: (state, { payload }) => {
             state.loading = false
-            state.userToken = payload
+            state.userToken = payload[0]
+            state.userInfo = payload[1]
         },
         [userLogin.rejected]: (state, { payload }) => {
             state.loading = false
+            state.userToken = false
             state.error = payload
         },
 
@@ -71,12 +78,13 @@ const authSlice = createSlice({
         [logout.fulfilled]: (state) => {
             state.loading = false
             state.userInfo = null
-            state.userToken = null
+            state.userToken = false
             state.error = null
             state.loading = false
         },
         [logout.rejected]: (state, { payload }) => {
             state.loading = false
+            state.userToken = false
             state.error = payload
         },
 
@@ -99,6 +107,6 @@ const authSlice = createSlice({
 })
 
 export const selectIsLoggedIn = (state) => state.auth.userToken;
-export const { reset } = authSlice.actions
+export const { reset, setUserInfo } = authSlice.actions
 
 export default authSlice.reducer;

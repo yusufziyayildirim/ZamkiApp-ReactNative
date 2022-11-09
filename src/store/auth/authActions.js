@@ -3,7 +3,6 @@ import axios from 'axios'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import routes from '../../constants/routes'
 
-
 const getToken = async () => {
     try {
         const token = await AsyncStorage.getItem('userToken');
@@ -26,11 +25,10 @@ export const isTokenValid = createAsyncThunk(
                     Authorization: `Bearer ${token}`,
                 },
             }
-
+            // console.log(token)
             const user = await axios.get(routes.LOGGED_USER, config)
 
-            // AsyncStorage.getItem('@userInfo', user.data.data)
-            return user
+            return [token, user.data.data]
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
@@ -76,7 +74,7 @@ export const userLogin = createAsyncThunk(
     async ({ email, password }, { rejectWithValue }) => {
         try {
             // configure header's Content-Type as JSON
-            const config = {
+            let config = {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -89,7 +87,14 @@ export const userLogin = createAsyncThunk(
             if (response.data.status) {
                 // store user's token in local storage
                 await AsyncStorage.setItem('userToken', response.data.data)
-                return response.data.data
+                config = {
+                    headers: {
+                        Authorization: `Bearer ${response.data.data}`,
+                    },
+                }
+                //get logged user data
+                const user = await axios.get(routes.LOGGED_USER, config)
+                return [response.data.data, user.data.data]
             }
 
             return rejectWithValue(response.data.message)
@@ -119,7 +124,7 @@ export const logout = createAsyncThunk(
                 },
             }
 
-            await axios.post(routes.LOGOUT, {} ,config)
+            await axios.post(routes.LOGOUT, {}, config)
             // AsyncStorage.getAllKeys()
             //     .then(keys => AsyncStorage.multiRemove(keys))
             // AsyncStorage.getItem('@userInfo', user.data.data)
