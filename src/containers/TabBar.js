@@ -59,10 +59,10 @@ function TabBar({ state, descriptors, navigation }) {
                             )
                         }
                         {
-                            (label === "Profile" && isFocused) ? (
+                            (label === "ProfileStack" && isFocused) ? (
                                 <FontAwesome5  name="user-alt" size={22} color="black" />
                             ) : (
-                                label == "Profile" && (
+                                label == "ProfileStack" && (
                                     <FontAwesome5  name="user" size={23} color={colors.secondary} />
                                 )
                             )

@@ -1,9 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TabBar from '../containers/TabBar';
+import ProfileNavigator from './stacks/ProfileNavigator';
 import HomeScreen from '../screens/app/home';
 import ChatsScreen from '../screens/app/chats';
 import RoomsScreen from '../screens/app/rooms';
-import ProfileScreen from '../screens/app/profile';
+// import ProfileScreen from '../screens/app/profile';
 
 
 const TabNavigator = createBottomTabNavigator();
@@ -14,7 +15,7 @@ const AppNavigator = () => {
             <TabNavigator.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} /> 
             <TabNavigator.Screen name="Chats" component={ChatsScreen} options={{ headerShown: false }} /> 
             <TabNavigator.Screen name="Rooms" component={RoomsScreen} options={{ headerShown: false }} /> 
-            <TabNavigator.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} /> 
+            <TabNavigator.Screen name="ProfileStack" component={ProfileNavigator} options={{ headerShown: false }} /> 
         </TabNavigator.Navigator>
     )
 }
