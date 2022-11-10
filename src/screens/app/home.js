@@ -7,7 +7,7 @@ import UserListItem from '../../components/UserListItem';
 import SearchBox from '../../components/SearchBox';
 import colors from '../../theme/colors';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
 
   return (
     <View style={{ backgroundColor: colors.backgroundColor, paddingTop: 10 }}>
@@ -25,6 +25,7 @@ const HomeScreen = () => {
                 userDetail="I want to practice basic spanis and make some friends"
                 speaks=""
                 learns=""
+                navigation={navigation}
               />
               <UserListItem
                 userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
@@ -32,35 +33,9 @@ const HomeScreen = () => {
                 userDetail="I want to practice basic spanis and make some friends"
                 speaks=""
                 learns=""
+                navigation={navigation}
               />
-              <UserListItem
-                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
-                userName="Yusuf Yıldırım"
-                userDetail="I want to practice basic spanis and make some friends"
-                speaks=""
-                learns=""
-              />
-              <UserListItem
-                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
-                userName="Yusuf Yıldırım"
-                userDetail="I want to practice basic spanis and make some friends"
-                speaks=""
-                learns=""
-              />
-              <UserListItem
-                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
-                userName="Yusuf Yıldırım"
-                userDetail="I want to practice basic spanis and make some friends"
-                speaks=""
-                learns=""
-              />
-              <UserListItem
-                userImg="https://seamcline.com.ng/students/assets/images/users/1.jpg"
-                userName="Yusuf Yıldırım"
-                userDetail="I want to practice basic spanis and make some friends"
-                speaks=""
-                learns=""
-              />
+              
             </View>
           </ScrollView>
         </SafeAreaView>
