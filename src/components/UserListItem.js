@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import colors from '../theme/colors'
 
-const UserListItem = ({ userImg, userName, userDetail, speaks, learns }) => {
+const UserListItem = ({ userImg, userName, userDetail, speaks, learns, navigation }) => {
     return (
-        <TouchableOpacity style={styles.itemWrap}>
+        <TouchableOpacity onPress={() => navigation.navigate('UserDetail')} style={styles.itemWrap}>
             <Image style={styles.userImg} source={{ uri: userImg }} />
             <View style={styles.contentWrap}>
                 <View>
