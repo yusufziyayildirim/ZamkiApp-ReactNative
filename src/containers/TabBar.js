@@ -32,10 +32,10 @@ function TabBar({ state, descriptors, navigation }) {
                 return (
                     <TouchableOpacity key={label} onPress={onPress} style={styles.tabBarButton}>
                         {
-                            (label === "Home" && isFocused) ? (
+                            (label === "HomeStack" && isFocused) ? (
                                 <Ionicons name="home" size={24} color="black" />
                             ) : (
-                                label == "Home" && (
+                                label == "HomeStack" && (
                                     <Ionicons name="home-outline" size={24} color={colors.secondary} />
                                 )
                             )
