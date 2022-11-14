@@ -41,10 +41,10 @@ function TabBar({ state, descriptors, navigation }) {
                             )
                         }
                         {
-                            (label === "Chats" && isFocused) ? (
+                            (label === "ChatsStack" && isFocused) ? (
                                 <Ionicons name="chatbubbles" size={24} color="black" />
                             ) : (
-                                label == "Chats" && (
+                                label == "ChatsStack" && (
                                     <Ionicons name="chatbubbles-outline" size={24} color={colors.secondary} />
                                 )
                             )
