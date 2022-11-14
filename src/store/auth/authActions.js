@@ -28,7 +28,7 @@ export const isTokenValid = createAsyncThunk(
             // console.log(token)
             const user = await axios.get(routes.LOGGED_USER, config)
 
-            return [token, user.data.data]
+            return [token, user.data.data[0]]
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
