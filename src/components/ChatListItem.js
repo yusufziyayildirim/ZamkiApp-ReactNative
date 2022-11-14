@@ -3,18 +3,18 @@ import colors from '../theme/colors'
 
 const ChatListItem = ({ newMessage, userImg, userName, userMessage, totalMessage }) => {
   return (
-    <TouchableOpacity style={newMessage ? styles.newMessageItemWrap : styles.itemWrap}>
+    <View style={newMessage ? styles.newMessageItemWrap : styles.itemWrap}>
       <Image source={{ uri: userImg }} style={styles.userImg} />
       <View style={{ paddingLeft: 15, height: 50, justifyContent: "space-around" }}>
         <Text style={{ fontSize: 17, fontWeight: "700", color: colors.textPrimary }}>{userName}</Text>
-        <Text style={{color: colors.secondary}}>{userMessage}</Text>
+        <Text style={{ color: colors.secondary }}>{userMessage}</Text>
       </View>
       {totalMessage &&
         <View style={styles.newMessageWrap}>
           <Text style={{ color: "white", fontWeight: "700" }}>{totalMessage}</Text>
         </View>
       }
-    </TouchableOpacity>
+    </View>
   )
 }
 
