@@ -2,8 +2,46 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { FontAwesome } from '@expo/vector-icons';
 import colors from '../../../theme/colors';
+import { db } from '../../../constants/firebase';
+import { collection, addDoc, where, query, onSnapshot } from "firebase/firestore";
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-const UserDetailScreen = ({ navigation }) => {
+
+const UserDetailScreen = ({ navigation, route }) => {
+    const { userInfo } = useSelector(state => state.auth);
+    const [chatId, setChatId] = useState("")
+    const { user } = route.params
+    let docRef1 = query(collection(db, "chats"), where('users', '==', [userInfo.email, user.email]))
+    let docRef2 = query(collection(db, "chats"), where('users', '==', [user.email, userInfo.email]))
+
+    useEffect(() => {
+        onSnapshot(docRef1, (snapshot) => {
+            snapshot.docs.map(item => {
+                setChatId(item.id)
+            })
+        })
+        onSnapshot(docRef2, (snapshot) => {
+            snapshot.docs.map(item => {
+                setChatId(item.id)
+            })
+        })
+    }, [])
+
+    const createOrGetChat = async () => {
+        if (chatId) {
+            navigation.navigate('Chat', { chatId: chatId })
+        } else {
+            const res = await addDoc(collection(db, "chats"), {
+                users: [userInfo.email, user.email],
+                usersName: [userInfo.name, user.name],
+                messages: []
+            })
+            navigation.navigate('Chat', { chatId: res.id })
+        }
+    }
+
     return (
         <View style={{ backgroundColor: colors.gray, minHeight: "100%" }}>
             <View style={styles.headerWrap}>
@@ -19,7 +57,7 @@ const UserDetailScreen = ({ navigation }) => {
                                 <FontAwesome name="chevron-left" size={20} color={colors.backgroundColor} />
                             </TouchableOpacity>
                             <Text style={styles.headerUserName}>
-                                Yusuf Yıldırım
+                                {user.name}
                             </Text>
                             <TouchableOpacity>
                                 <FontAwesome style={styles.userReport} name="exclamation-circle" size={22} color="black" />
@@ -53,7 +91,7 @@ const UserDetailScreen = ({ navigation }) => {
                                 <FontAwesome name="video-camera" size={24} color={colors.red} />
                                 <Text style={styles.actionButtonText}>Video</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={styles.actionButton}>
+                            <TouchableOpacity onPress={createOrGetChat} style={styles.actionButton}>
                                 <FontAwesome name="commenting" size={24} color={colors.red} />
                                 <Text style={styles.actionButtonText}>Message</Text>
                             </TouchableOpacity>
