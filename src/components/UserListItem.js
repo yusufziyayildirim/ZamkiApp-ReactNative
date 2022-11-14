@@ -1,9 +1,9 @@
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import colors from '../theme/colors'
 
-const UserListItem = ({ userImg, userName, userDetail, speaks, learns, navigation }) => {
+const UserListItem = ({ userImg, userName, userDetail, speaks, learns }) => {
     return (
-        <TouchableOpacity onPress={() => navigation.navigate('UserDetail')} style={styles.itemWrap}>
+        <View style={styles.itemWrap}>
             <Image style={styles.userImg} source={{ uri: userImg }} />
             <View style={styles.contentWrap}>
                 <View>
@@ -23,7 +23,7 @@ const UserListItem = ({ userImg, userName, userDetail, speaks, learns, navigatio
                     </View>
                 </View>
             </View>
-        </TouchableOpacity>
+        </View>
     )
 }
 
