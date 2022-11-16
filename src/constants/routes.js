@@ -9,6 +9,7 @@ const routes = {
     RESET_PASSWORD_MAIL: BASE_URL + "/send-reset-password-email",
     CHANGE_PASSWORD: BASE_URL + "/changepassword",
     GET_ALL_USER: BASE_URL + "/getalluser",
+    GET_USER: BASE_URL + "/getuser",
 }
 
 export default routes;
