@@ -1,5 +1,5 @@
-import { View, TouchableOpacity, StyleSheet, useColorScheme } from 'react-native';
-import { FontAwesome5 , Ionicons, AntDesign } from '@expo/vector-icons';
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { Ionicons, Feather } from '@expo/vector-icons';
 import colors from '../theme/colors';
 
 function TabBar({ state, descriptors, navigation }) {
@@ -32,39 +32,43 @@ function TabBar({ state, descriptors, navigation }) {
                 return (
                     <TouchableOpacity key={label} onPress={onPress} style={styles.tabBarButton}>
                         {
-                            (label === "HomeStack" && isFocused) ? (
-                                <Ionicons name="home" size={24} color="black" />
+                            (label === "Home" && isFocused) ? (
+                                <Ionicons name="people" size={28} color="black" />
                             ) : (
-                                label == "HomeStack" && (
-                                    <Ionicons name="home-outline" size={24} color={colors.secondary} />
+                                label == "Home" && (
+                                    <Ionicons name="people-outline" size={28} />
                                 )
                             )
                         }
                         {
-                            (label === "ChatsStack" && isFocused) ? (
+                            (label === "Chats" && isFocused) ? (
                                 <Ionicons name="chatbubbles" size={24} color="black" />
                             ) : (
-                                label == "ChatsStack" && (
+                                label == "Chats" && (
                                     <Ionicons name="chatbubbles-outline" size={24} color={colors.secondary} />
                                 )
                             )
                         }
                         {
                             (label === "Rooms" && isFocused) ? (
-                                <AntDesign name="star" size={24} color="black" />
+                                <Ionicons name="ios-logo-slack" size={24} color="black" />
+                                // <FontAwesome5 name="slack" size={24} color="black" />
                             ) : (
                                 label == "Rooms" && (
-                                    <AntDesign name="staro" size={24} color={colors.secondary} />
+                                    <Feather name="slack" size={24} color={colors.secondary} />
                                 )
                             )
                         }
                         {
-                            (label === "ProfileStack" && isFocused) ? (
-                                <FontAwesome5  name="user-alt" size={22} color="black" />
-                            ) : (
-                                label == "ProfileStack" && (
-                                    <FontAwesome5  name="user" size={23} color={colors.secondary} />
-                                )
+                            (label === "Profile") && (
+                                <Image
+                                    style={{
+                                        height: 24,
+                                        width: 24,
+                                        borderRadius: 100
+                                    }}
+                                    source={{ uri: "https://seamcline.com.ng/students/assets/images/users/1.jpg" }}
+                                />
                             )
                         }
                         {isFocused && <View style={styles.indicator} />}
@@ -85,7 +89,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.1,
         shadowRadius: 24,
         paddingBottom: 30,
-        borderTopWidth:0.5,
+        borderTopWidth: 0.5,
         borderTopColor: colors.borderColor
     },
     tabBarButton: {
